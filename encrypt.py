@@ -8,12 +8,12 @@ def generate_and_print_key():
         print(f"Encryption key already set in environment: {existing_key}")
         return existing_key
 
-    # Generate new Fernet key
+    # Fernet key
     new_key = Fernet.generate_key().decode()
     print("===== IMPORTANT =====")
     print("Generated new encryption key. Save this securely!")
     print(f"AD_SYNC_ENCRYPTION_KEY={new_key}")
-    print(f'kindly export it:: export {new_key}')
+    print(f'RUN: export AD_SYNC_ENCRYPTION_KEY={new_key}')
     print("=====================")
     return new_key
 
