@@ -187,6 +187,8 @@ services:
       - "8000:8000"
     networks:
       - elastic
+    environment:
+      - AD_SYNC_ENCRYPTION_KEY=lqSFQVngbsmE1AcvW4LslhFPufav4J0o4iifuq6UsZI=
 
   
 networks:

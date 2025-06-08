@@ -1,2 +1,3 @@
 from elasticsearch8 import Elasticsearch
-es: Elasticsearch = Elasticsearch("https://es01:9200", basic_auth=("elastic", "kibana123"), verify_certs=False)
+from app.config import env
+es: Elasticsearch = Elasticsearch("https://es01:9200", basic_auth=(env.ELASTIC_SEARCH_USER, env.ELASTIC_SEARCH_PASSWORD), verify_certs=False)

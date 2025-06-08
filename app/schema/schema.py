@@ -8,12 +8,18 @@ class UserStatus(enum.Enum):
     disabled = "disabled"
 
 class ActiveDirectoryUser(BaseModel):
-    id: int
+    # id: int
     username: str
-    email:EmailStr
     encrypted_hash:str 
-    es_roles: Optional[str] = 'ad_sync'
-    status: str # type: ignore
 
+    # email:EmailStr
+    # es_roles: Optional[str] = 'ad_sync'
+    # status: str 
+
+    class Config:
+        from_attributes = True
+
+class UserActivationResponse(BaseModel):
+    message:str 
     class Config:
         from_attributes = True

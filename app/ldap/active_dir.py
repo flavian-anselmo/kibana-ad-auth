@@ -1,12 +1,3 @@
-# '''
-# |------------      ------------------           ------------
-# |  ldap_sync |--->| Active Directory |-------> | Maria DB   |
-# |------------      ------------------           ------------
-
-
-# ->  picks users info from ldap and populate new users  created from ldap
-# ->  user status is set to pending_activation
-# ->  check for password expiry for the users againist ldap 
 import ldap
 from configparser import ConfigParser
 from typing import Optional, Tuple, Dict, Any, List
@@ -368,42 +359,3 @@ class ActiveDirectoryAuth:
         is_member = any(group_name.lower() in group.lower() for group in member_of)
         
         return True, f"User membership check completed", is_member
-
-
-# # Example usage
-# if __name__ == "__main__":
-#     # Initialize with default settings
-#     ad_auth = ActiveDirectoryAuth()
-    
-#     # Or initialize with custom settings
-#     # ad_auth = ActiveDirectoryAuth(
-#     #     server="your-ad-server.com",
-#     #     bind_user="CN=ServiceAccount,CN=Users,DC=company,DC=com",
-#     #     bind_password="service_password",
-#     #     search_base="DC=company,DC=com",
-#     #     domain="company.com"
-#     # )
-    
-#     # Or load from config file
-#     # ad_auth = ActiveDirectoryAuth(config_file="/etc/elk_ad_sync.conf")
-    
-#     # Authenticate user
-#     username = "testuser"
-#     password = "testpassword"
-    
-#     # Simple authentication
-#     success, message = ad_auth.authenticate_user(username, password)
-#     print(f"Authentication: {success} - {message}")
-    
-#     # Authentication with search
-#     success, message = ad_auth.authenticate_with_search(username, password)
-#     print(f"Auth with search: {success} - {message}")
-    
-#     # Get user attributes
-#     success, message, attrs = ad_auth.get_user_attributes(username, password)
-#     if success and attrs:
-#         print(f"User attributes: {attrs}")
-    
-#     # Check group membership
-#     success, message, is_member = ad_auth.is_user_in_group(username, password, "Administrators")
-#     print(f"Admin group member: {is_member}")

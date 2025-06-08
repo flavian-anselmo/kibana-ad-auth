@@ -1,8 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base 
+from app.config import env
 
-SQLALCHEMY_DATABASE_URL = 'mariadb+pymysql://root:kibana123@mariadb:3306/adusers'
+
+SQLALCHEMY_DATABASE_URL = env.SQLALCHEMY_DATABASE_URL
 
 
 engine = create_engine(
